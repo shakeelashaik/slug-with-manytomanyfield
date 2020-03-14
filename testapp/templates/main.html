@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Python</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	 <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  </head>
+  <body>
+  <div class="login-box">
+    <div class="lb-header">
+     <h5>Form<h5>
+    </div>
+    <form class="email-login" method="post">
+    {% csrf_token %}
+	       <label class="kalll">Request Type :</label>
+	  <div class="dropdown ddd">
+     {{ form.Requesttype }}
+</div>
+      <div class="u-form-group">
+	  <label class="kalll">Request Desc :</label>
+       {{ form.Reqdisc }}
+      </div>
+
+      <div class="u-form-group">
+	  <label class="kalll">City :</label>
+        {{ form.city }}
+      </div>
+	     <div class="dropdown ddd">
+	     <label class="kalll">State :</label>
+       {{ form.state }}
+</div>
+	  <div class="u-form-group">
+	  <label class="kalll">Pin Code :</label>
+        {{ form.pincode }}
+      </div>
+	   <div class="u-form-group">
+	   <label class="kalll">Alt No :</label>
+        {{ form.Altermob }}
+      </div>
+      <div class="u-form-group">
+        <button>Submit</button>
+      </div>
+    </form>
+    
+  </div>
+
+   
+  </body>
+</html>

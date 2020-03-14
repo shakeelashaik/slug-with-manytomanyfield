@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>Python</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	 <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  </head>
+  <body>
+  
+{% if user.is_authenticated %}
+<div>
+	<a href="{% url 'logout' %}" ><button type="button" class="btn-primary">Logout
+</button></a> 
+</div>
+{% endif %}
+
+  
+
+  <div class="login-box">
+    <div class="lb-header">
+     <h5>Request View<h5>
+    </div>
+        
+        
+       <div class="u-form-group">
+	  <label class="kalll">Request Type :</label>
+	  <div class="dropdown ddd">
+     <span>{% for type in a.Requesttype.all %}{{ type.typ }}
+          {% endfor %}</span>
+    </div>
+      <div class="u-form-group">
+	  <label class="kalll">Request Desc :</label>
+     <span>{{ a.Reqdisc }}</span>
+      </div>
+
+      <div class="u-form-group">
+	  <label class="kalll">City :</label>
+        <span>{{ a.city }}</span>
+      </div>
+	     <div class="dropdown ddd">
+	     <label class="kalll">State :</label>    
+        <span>{{ a.state }}</span>
+         </div>
+	  <div class="u-form-group">
+	  <label class="kalll">Pin Code :</label>
+        <span>{{ a.pincode }}</span>
+      </div>
+	   <div class="u-form-group">
+	   <label class="kalll">Alt No :</label>
+        <span>{{ a.Altermob }}</span>
+        </div>
+        <div class="u-form-group">
+	  <label class="kalll">Status</label>
+        <span>{{ a.status }}</span>
+      </div>
+      <div class="u-form-group">
+	  <label class="kalll">Remarks:</label>
+        <span>{{ a.remarks }}</span>
+      </div>
+	   
+
+      
+
+    
+  </div>
+
+   
+  </body>
+</html>

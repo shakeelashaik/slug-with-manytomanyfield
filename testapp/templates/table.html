@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Python</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	 <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  </head>
+  <body>
+ {% if messages %}
+   <ul class="messages">
+   {% for message in messages %}
+	   <div class="alert alert-{% if message.tags == 'success' %}success{% else %}danger{% endif %} alert-dismissible">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ message }}
+      </div>
+   {% endfor %}
+</ul>
+{% endif %}
+
+{% if user.is_authenticated %}
+<div>
+	<a href="{% url 'logout' %}" ><button type="button" class="btn-primary">Logout
+</button></a> 
+</div>
+{% endif %}
+ <div class="container">
+  <h2>Request List
+</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Request Id</th>
+        <th>Request Type</th>
+        <th>Request Desc</th>
+        <th>Request Date</th>
+        <th>Status</th>
+        <th>View</th>
+      </tr>
+    </thead>
+    <tbody>
+       {% for c in d %}    
+      <tr class="success">
+        <td>{{ c.uuid }}</td>
+        <td>{% for type in c.Requesttype.all %}{{ type.typ }}
+          {% endfor %}</td>
+        <td>{{ c.Reqdisc }}</td>
+        <td>{{ c.date_modified }}</td>
+        <td>{{ c.status }}</td>
+        <td><a href="{% url 'viewpage' slug=c.slug %}"><span>View</span></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+ <a href="{% url 'main' %}" ><button type="button" class="btn-primary">New Request
+</button></a>
+
+</div>
+
+ 
+
+  </body>
+</html>
